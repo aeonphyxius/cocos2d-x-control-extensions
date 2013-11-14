@@ -2,7 +2,7 @@
 
 CCProgressTimerMulti::CCProgressTimerMulti()
 {	
-	currState = -1.0;			// In order to indicate that the states queue is empty
+	currState = -1.0;		// In order to indicate that the states queue is empty
 	currLowerLimit = -1.0;		// In order to indicate that the states queue is empty
 	currUpperLimit = -1.0;		// In order to indicate that the states queue is empty
 	
