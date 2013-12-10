@@ -1,12 +1,13 @@
+
 //
 //
 // Class:		CCTimerControl
 // Green Turtle Games
 // Author:		Alejandro Santiago
-// Email:		  alejandro@aeonphyxius.com
-// Description: This class creates a Timer control (Minutes and Secods).
-//				Using a CCNode as a grouping object and 2 CCLabelTTF components
-//				for Minutes and Seconds display as a child.
+// Email:		alejandro@aeonphyxius.com
+// Description: 	This class creates a Timer control (Minutes and Secods).
+//			Using a CCNode as a grouping object and 2 CCLabelTTF components
+//			for Minutes and Seconds display as a child.
 //				
 //
 #ifndef __CC_TIMER_CONTROL_H__
@@ -45,79 +46,90 @@ class CCTimerControl : public CCNode
 public:
 	
 	/**
-  * CCTimerControl	Default constructor, initializing the states std::map and current state
-	*					        Create() function must be called afterwards
+    	* CCTimerControl		Default constructor, initializing the states std::map and current state
+	*				Create() function must be called afterwards
 	*
-  */
+    	*/
 	CCTimerControl();
 
 	/**
-  * CCTimerControl	Constructor, initializing the states std::map and current state
-	*					        Create() function does not to be called afterwards. Everything is
-	*					        initialized within this constructor
+    	* CCTimerControl		Constructor, initializing the states std::map and current state
+	*				Create() function does not to be called afterwards. Everything is
+	*				initialized within this constructor
 	*
-	* @param    CCString	- Font to be used to display the text
+	* @param    CCString		- Font to be used to display the text
 	* @param    float		- Font size
-  */
+    	*/
 	CCTimerControl(const CCString _font, const float _font_size);
 
 
 	/**
-  * ~CCTimerControl	Default destructor. Clean up before exiting
+    	* ~CCTimerControl		Default destructor. Clean up before exiting
 	*
-  */
+    	*/
 	~CCTimerControl();
 
+
 	/**
-  * addState		  	Add a color state for this control. If we want to display different 
-	*					        text colors depending on the time, we shall create this indicating the 
-	*					        lower limit and the upper limit (both in seconds) and the color
-	*					        we want to display while the time is between this limits
+    	* addState			Add a color state for this control. If we want to display different 
+	*				text colors depending on the time, we shall create this indicating the 
+	*				lower limit and the upper limit (both in seconds) and the color
+	*				we want to display while the time is between this limits
 	*
 	* @param    float		- Lower limit in secods for this state
 	* @param    float		- Upper limit in seconds for this state
-	* @param    ccColor3B	- Color to display the TimerControl within this state
+	* @param    ccColor3B		- Color to display the TimerControl within this state
 	*
-  */
+    	*/
 	void addState (const float _lowerLimit,const float _upperLimit,const ccColor3B _texture_color);	
 	
 
 	/**
-  * addState			Add a color state for this control. If we want to display different 
-	*					      text colors depending on the time, we shall create this indicating the 
-	*				  	    lower limit and the upper limit (both in seconds) and the color
-	*					      we want to display while the time is between this limits
+    	* addState			Add a color state for this control. If we want to display different 
+	*				text colors depending on the time, we shall create this indicating the 
+	*				lower limit and the upper limit (both in seconds) and the color
+	*				we want to display while the time is between this limits
 	*
 	* @param    float		- Lower limit in secods for this state
 	* @param    float		- Upper limit in seconds for this state
-	* @param    ccColor3B	- Color to display the TimerControl within this state
+	* @param    ccColor3B		- Color to display the TimerControl within this state
 	* @param    bool		- Is it going to blink while in this state?
 	*
-  */
+    	*/
 	void addState(const float _lowerLimit,const float _upperLimit,const ccColor3B _texture_color,const bool _isBlinking);	
 
 
 	/**
-   * CCTimerControl		Create the control initializing the text components and add them to the 
-	*						          current CCNode object
+    	* create			Create the control initializing the text components and add them to the 
+	*				current CCNode object
 	*
-	* @param    CCString	- Font to be used to display the text
+	* @param    CCString		- Font to be used to display the text
 	* @param    float		- Font size
 	*
-  */
+    	*/
 	void create (const CCString _font, const float _font_size);
 
 
 	/**
-  * CCTimerControl		Every update we should call this function to update the time in 
-	*						our display.
+    	* updateTime			Every update we should call this function to update the time in 
+	*				our display. this function first will check if the time is between the 
+	*				current limits and then update the font, size, color etc if needed. 
+	*				Afterwards will update the Timer's text
 	*
 	* @param    float		- Total seconds to display in our Timer Control
 	*
-  */
+    	*/
 	void updateTime (const float _seconds);
 
 private:
+
+	/**
+    	* CCTimerControl		After checking the state we are in, we should just update the text of our
+	*				timer indicator
+	*
+	* @param    float		- Total seconds to display in our Timer Control
+	*
+    	*/
 	void updateTextControls(const float _seconds);
 
 private:
@@ -128,7 +140,7 @@ private:
 	/* Current state. Used to check upper and lower limits */
 	TimerControlStates * m_current_state;
 
-	/* Current status id */
+	/* Current status id*/
 	int current_state_id;
 		
 };
